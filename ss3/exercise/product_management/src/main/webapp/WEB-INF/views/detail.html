@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>View Detail</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>View Detail</h1>
+    <a class="btn btn-outline-dark" th:href="@{/product}">
+        Back to product list
+    </a>
+
+    <table>
+        <tr>
+            <th>
+                <label>Name:</label>
+            </th>
+
+            <td>
+                <label th:text="${product.getName()}"></label>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label>Price:</label>
+            </th>
+
+            <td>
+                <label th:text="${product.getPrice()}"></label>
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                <label>Brand:</label>
+            </th>
+
+            <td>
+                <label th:text="${product.getBrand()}"></label>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
