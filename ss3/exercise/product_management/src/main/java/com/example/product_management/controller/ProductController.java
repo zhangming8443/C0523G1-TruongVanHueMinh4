@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Controller
@@ -29,21 +30,23 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String showCreate(Model model) {
+    public String showCreateForm(Model model) {
         model.addAttribute("product", new Product());
         return "create";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String create(Product product, RedirectAttributes redirectAttributes) {
-        product.setId((int) (Math.random() * 1000));
+        int lastProductId = 0;
+        int newProductId = lastProductId + 1;
+        product.setId((int) newProductId);
         productService.save(product);
         redirectAttributes.addFlashAttribute("message", "Add new product successfully !");
         return "redirect:/product";
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-    public String showEdit(@PathVariable int id, Model model) {
+    public String showEditForm(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         return "edit";
     }
@@ -56,7 +59,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    public String showDelete(@PathVariable int id, Model model) {
+    public String showDeleteForm(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         return "delete";
     }
@@ -69,13 +72,13 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
-    public String showDetail(@PathVariable int id, Model model) {
+    public String showDetailForm(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         return "detail";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String showSearch(@RequestParam String name, Model model, RedirectAttributes redirectAttributes) {
+    public String showSearchForm(@RequestParam String name, Model model, RedirectAttributes redirectAttributes) {
         List<Product> productList1 = new ArrayList<>();
         List<Product> productList = productService.findAll();
         for (int i = 0; i < productList.size(); i++) {
