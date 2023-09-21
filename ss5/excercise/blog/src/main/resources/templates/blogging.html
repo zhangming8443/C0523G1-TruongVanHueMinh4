@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Blogging</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Blogging</h1>
+    <a class="btn btn-outline-dark" th:href="@{/blog}">
+        Back to product list
+    </a>
+    <form th:action="@{/blog/confirm-create}" th:object="${blog}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{idBlog}"/>
+
+        <table>
+            <tr>
+                <th>
+                    <label for="title">Title</label>
+                </th>
+
+                <td>
+                    <input required type="text" id="title" th:field="*{title}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="nameAuthor">Name author</label>
+                </th>
+
+                <td>
+                    <input required type="text" id="nameAuthor" th:field="*{nameAuthor}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="emailAuthor">Email author</label>
+                </th>
+
+                <td>
+                    <input required type="email" id="emailAuthor" th:field="*{emailAuthor}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="content">Content</label>
+                </th>
+
+                <td>
+                    <textarea required th:field="*{content}" id="content"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="date">Date</label>
+                </th>
+
+                <td>
+                    <input type="date" id="date" th:field="*{dateBlog}">
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="image">Image</label>
+                </th>
+
+                <td>
+                    <input type="file" id="image" th:field="*{image}">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input class="btn btn-outline-primary" type="submit" value="Confirm"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--<script>-->
+<!--    function validateForm() {-->
+<!--        var inputNameAuthor = document.getElementById("nameAuthor").value;-->
+<!--        if (inputNameAuthor === "") {-->
+<!--            alert("Please don't leave it blank !");-->
+<!--            return false;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+</body>
+</html>
