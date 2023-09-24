@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <h1>Blogging</h1>
     <a class="btn btn-outline-dark" th:href="@{/blog}">
-        Back to product list
+        Back to blog
     </a>
     <form th:action="@{/blog/confirm-create}" th:object="${blog}"
           method="POST" novalidate="novalidate">
@@ -51,6 +51,20 @@
 
                 <td>
                     <textarea required th:field="*{content}" id="content"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="category">Category</label>
+                </th>
+
+                <td>
+                    <select id="category" name="category" th:field="*{category}">
+                        <option th:each="list : ${category}"
+                                th:value="${list.getIdCategory()}"
+                                th:text="${list.getNameCategory()}"></option>
+                    </select>
                 </td>
             </tr>
 

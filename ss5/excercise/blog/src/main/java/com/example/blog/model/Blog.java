@@ -20,6 +20,11 @@ public class Blog {
     private String emailAuthor;
     @Column(name = "image")
     private String image;
+
+    @ManyToOne
+    @JoinColumn(name = "id_category", referencedColumnName = "id_category")
+    private Category category;
+
     public Blog() {
     }
 
@@ -87,5 +92,13 @@ public class Blog {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
