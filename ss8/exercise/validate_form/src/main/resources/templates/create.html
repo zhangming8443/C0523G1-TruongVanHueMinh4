@@ -9,7 +9,7 @@
     <a class="btn btn-outline-dark" th:href="@{/user}">
         Back to list
     </a>
-    <form th:action="@{/user/confirm-create}" th:object="${user}"
+    <form th:action="@{/user/confirm-create}" th:object="${userDto}"
           method="POST" novalidate="novalidate">
 
         <table>

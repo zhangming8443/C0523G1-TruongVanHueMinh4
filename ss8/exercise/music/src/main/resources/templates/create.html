@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Create</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Create</h1>
+    <a class="btn btn-outline-dark" th:href="@{/music}">
+        Back to list
+    </a>
+    <form th:action="@{/music/confirm-create}" th:object="${musicDto}"
+          method="POST" novalidate="novalidate">
+
+        <table>
+            <tr>
+                <th>
+                    <label for="nameSong">Song name</label>
+                </th>
+
+                <td>
+                    <input required type="text" id="nameSong" th:field="*{nameSong}"/>
+                    <small style="color: red" th:if="${#fields.hasErrors('nameSong')}" th:errors="*{nameSong}"></small>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="performer">Performer</label>
+                </th>
+
+                <td>
+                    <input required type="text" id="performer" th:field="*{performer}"/>
+                    <small style="color: red" th:if="${#fields.hasErrors('performer')}" th:errors="*{performer}"></small>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="typeMusic">Type music</label>
+                </th>
+
+                <td>
+                    <input required type="text" id="typeMusic" th:field="*{typeMusic}"/>
+                    <small style="color: red" th:if="${#fields.hasErrors('typeMusic')}" th:errors="*{typeMusic}"></small>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input class="btn btn-outline-primary" type="submit" value="Confirm"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,25 +1,27 @@
-package com.example.validate_form.model;
+package com.example.validate_form.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.*;
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class UserDto {
     private int id;
+    @NotEmpty
+    @Size(min = 5, max = 45, message = "Length form 5 to 45")
     private String firstName;
+    @NotEmpty
+    @Size(min = 5, max = 45, message = "Length form 5 to 45")
     private String lastName;
+    @Pattern(regexp = "^(0\\d{9})$", message = "Invalid phone number")
     private String phone;
+    @Min(value = 18, message = "Over 18 year old")
     private int age;
+
+    @Email(message = "Invalid email")
     private String email;
 
-    public User() {
+    public UserDto() {
     }
 
-    public User(String firstName, String lastName, String phone, int age, String email) {
+    public UserDto(String firstName, String lastName, String phone, int age, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
