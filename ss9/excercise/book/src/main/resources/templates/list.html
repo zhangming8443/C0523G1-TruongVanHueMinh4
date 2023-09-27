@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+  <meta charset="UTF-8">
+  <title>Book</title>
+</head>
+<body>
+<div class="container">
+  <h1 align="center">Book</h1>
+  <div align="center" th:if="${message}">
+    <strong style="color: green" th:text="${message}"></strong>
+  </div>
+  <a class="btn btn-outline-dark" th:href="@{/history}">
+    Borrowed books
+  </a>
+
+  <form action="" method="get">
+    <input name="searchTitle" placeholder="Enter the title to search">
+    <button>Search</button>
+  </form>
+  <table class="table table-hover">
+    <tr th:if="${book.isEmpty()}">
+      <td colspan="8">Empty list </td>
+    </tr>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Borrow</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="b,loop : ${book}">
+      <td th:text="${loop.count}"></td>
+      <td th:text="${b.getName()}"></td>
+      <td th:text="${b.getAmount()}"></td>
+      <td><a class="btn btn-outline-dark" th:href="@{/book/{id}/detail(id=${b.getId()})}">Borrow</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

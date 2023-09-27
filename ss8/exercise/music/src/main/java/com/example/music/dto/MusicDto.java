@@ -15,7 +15,7 @@ public class MusicDto {
     @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Performer name cannot contain special characters")
     private String performer;
     @NotEmpty
-    @Size(max = 1000, message = "Type music must not exceed 1000 characters")
+    @Size(max = 1000, message =  "Type music must not exceed 1000 characters")
     @Pattern(regexp = "^[\\w+[\\s\\,]*]+$", message = "Invalid type music")
     private String typeMusic;
 

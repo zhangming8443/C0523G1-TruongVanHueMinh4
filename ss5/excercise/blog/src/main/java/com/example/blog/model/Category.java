@@ -10,7 +10,7 @@ public class Category {
     @Column(name = "id_category")
     private int idCategory;
 
-    @Column(name = "name_category")
+    @Column(name = "name_category", columnDefinition = "UNIQUE")
     private String nameCategory;
 
     @OneToMany(mappedBy = "category")

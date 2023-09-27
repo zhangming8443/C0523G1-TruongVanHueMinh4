@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Detail Book</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Detail Book</h1>
+    <a class="btn btn-outline-dark" th:href="@{/book}">
+        Back to book list
+    </a>
+    <form th:action="@{/book/{id}/borrow(id=${book.id})}" method="POST">
+        <input type="hidden" th:field="*{id}"/>
+        <table>
+            <tr>
+                <th>
+                    <label><strong>Name:</strong></label>
+                </th>
+
+                <td>
+                    <label th:text="${book.getName()}"></label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="btn btn-outline-primary" type="submit" value="Borrow"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

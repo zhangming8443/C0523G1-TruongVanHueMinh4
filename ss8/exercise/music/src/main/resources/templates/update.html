@@ -11,7 +11,7 @@
     </a>
     <form th:action="@{/music/confirm-update}" th:object="${musicDto}"
           method="POST" novalidate="novalidate">
-
+        <input type="hidden" th:field="*{idSong}">
         <table>
             <tr>
                 <th>
