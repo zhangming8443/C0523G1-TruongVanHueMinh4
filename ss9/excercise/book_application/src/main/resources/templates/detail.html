@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Detail</title>
+</head>
+<body>
+<div class="container">
+    <form th:object="${book}" th:action="@{/library/borrow}" method="post">
+        <div class="mb-3">
+            <input hidden="hidden" th:field="*{bookId}" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tên sách</label>
+            <input readonly th:field="*{bookName}" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ảnh</label>
+            <img th:src="*{bookImage}" alt="">
+<!--            <input readonly th:field="*{bookImage}" type="text" class="form-control">-->
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Số lượng còn </label>
+            <input readonly th:field="*{bookQuantity}" type="text" class="form-control">
+        </div>
+
+        <a th:href="@{/library}" class="btn btn-primary btn-sm">Quay lại</a>
+        <span th:if="${book.bookQuantity == 0}">
+            Đã bị thuê hết !
+        </span>
+        <span th:if="${book.bookQuantity > 0}">
+            <button type="submit" class="btn btn-dark btn-sm">Mượn sách</button>
+        </span>
+    </form>
+    <br>
+</div>
+</body>
+</html>

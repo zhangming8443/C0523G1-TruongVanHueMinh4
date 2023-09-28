@@ -40,14 +40,14 @@ public class BookService implements IBookService {
             book.setAmount(book.getAmount() - 1);
             bookRepo.save(book);
 
-            Borrow borrow = new Borrow();
-            borrow.setBook(book);
-            borrow.setBorrowCode(code);
-
-            bookRepo.save(borrow);
-
-
-
+//            Borrow borrow = new Borrow();
+//            borrow.setBook(book);
+//            borrow.setBorrowCode(code);
+//
+//            bookRepo.save(borrow);
+//
+//
+//
         } else {
             throw new RuntimeException("Can't borrow book");
         }
@@ -66,4 +66,5 @@ public class BookService implements IBookService {
         borrow.setBorrowCode(code);
         borrow.setBook(book);
     }
+
 }

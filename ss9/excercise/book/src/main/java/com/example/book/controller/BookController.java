@@ -22,7 +22,7 @@ public class BookController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String showListBook(Model model) {
         List<Book> bookList = bookService.findAll();
-        model.addAttribute("book", bookList);
+        model.addAttribute("books", bookList);
         return "list";
     }
 
