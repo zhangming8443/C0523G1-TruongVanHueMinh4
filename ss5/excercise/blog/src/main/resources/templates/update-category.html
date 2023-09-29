@@ -11,6 +11,7 @@
   </a>
   <form th:action="@{/category/confirm-update}" th:object="${category}"
         method="POST" novalidate="novalidate ">
+    <input type="hidden" th:field="*{idCategory}"/>
     <table>
       <tr>
         <th>

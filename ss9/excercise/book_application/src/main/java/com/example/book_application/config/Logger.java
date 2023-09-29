@@ -7,14 +7,14 @@ public class Logger {
     @After("execution(* com.example.book_application.controller.LibraryController.showBookList(..))")
     public void showBorrowList(){
         count++;
-        System.out.println("Vừa có người truy cập");
+        System.out.println("Someone just visited");
     }
     @After("execution(* com.example.book_application.controller.BookController.bookBorrow(..))")
     public void bookBorrow(){
-        System.out.println("Vừa có người thuê sách");
+        System.out.println("Someone just rented the book");
     }
     @After("execution(* com.example.book_application.controller.BookController.bookReturn(..))")
     public void bookReturn(){
-        System.out.println("Vừa có người trả sách");
+        System.out.println("Someone just returned the book");
     }
 }

@@ -11,14 +11,14 @@ import java.util.List;
 
 public interface IBlogRepository extends JpaRepository<Blog, Integer> {
     Page<Blog> findAllByTitleContaining(Pageable pageable,String title);
-    @Query(value = "select * from blog where id_category =:id", nativeQuery = true)
+//    @Query(value = "select * from blog where id_category =:id", nativeQuery = true)
+//
+//    List<Blog> searchBlogByCategory(@Param("categoryId") int id);
 
-    List<Blog> searchBlogByCategory(@Param("categoryId") int id);
 
 
-
-    @Query(value = "select * from blog where name_author like :name ", nativeQuery = true)
-    List<Blog> searchByNameAuthor(@Param("nameAuthor") String nameAuthor);
+//    @Query(value = "select * from blog where name_author like :name ", nativeQuery = true)
+//    List<Blog> searchByNameAuthor(@Param("nameAuthor") String nameAuthor);
 
 
 }

@@ -8,11 +8,11 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_blog")
     private int idBlog;
-    @Column(name = "name_author",columnDefinition = "NOT NULL")
+    @Column(name = "name_author")
     private String nameAuthor;
     @Column(name = "title")
     private String title;
-    @Column(name = "content", columnDefinition = "LONGTEXT NOT NULL")
+    @Column(name = "content", columnDefinition = "LONGTEXT")
     private String content;
     @Column(name = "date_blog")
     private String dateBlog;

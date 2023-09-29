@@ -76,7 +76,7 @@ public class LibraryController {
             }
         }
         if (code == 0 && borrow == null) {
-            redirectAttributes.addFlashAttribute("message", "Bạn chưa mượn sách nào có mã thuê này cả !");
+            redirectAttributes.addFlashAttribute("message", "You haven't borrowed any books yet !");
             return "redirect:/library/book-return";
         }
         Book book = borrow.getBook();

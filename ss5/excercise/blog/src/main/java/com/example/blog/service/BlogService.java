@@ -15,8 +15,8 @@ public class BlogService implements IBlogService {
     private IBlogRepository blogRepository;
 
     @Override
-    public List<Blog> findAllByCategory() {
-        return null;
+    public List<Blog> getAll() {
+        return blogRepository.findAll();
     }
 
 
@@ -33,19 +33,6 @@ public class BlogService implements IBlogService {
 
     @Override
     public boolean update(Blog blog) {
-//        Blog blogUpdate = blogRepository.findById(idBlog).orElse(null);
-//        if (blogUpdate != null) {
-//            blogUpdate.setTitle(blog.getTitle());
-//            blogUpdate.setNameAuthor(blog.getNameAuthor());
-//            blogUpdate.setContent(blog.getContent());
-//            blogUpdate.setDateBlog(blog.getDateBlog());
-//            blogUpdate.setEmailAuthor(blog.getEmailAuthor());
-//            blogUpdate.setImage(blog.getImage());
-//
-//            blogRepository.save(blogUpdate);
-//            return true;
-//        }
-//        return false;
         if (findById(blog.getIdBlog()) == null) {
             return false;
         } else {
@@ -64,4 +51,6 @@ public class BlogService implements IBlogService {
     public Page<Blog> findAll(Pageable pageable, String searchTitle) {
         return blogRepository.findAllByTitleContaining(pageable, searchTitle);
     }
+
+
 }
