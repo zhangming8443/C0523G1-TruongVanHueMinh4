@@ -1,6 +1,7 @@
 package com.example.blog.service;
 
 import com.example.blog.model.Blog;
+import com.example.blog.model.Category;
 import com.example.blog.repository.IBlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -52,5 +53,8 @@ public class BlogService implements IBlogService {
         return blogRepository.findAllByTitleContaining(pageable, searchTitle);
     }
 
-
+    @Override
+    public List<Blog> findAllByCategory(Category category) {
+        return this.blogRepository.findAllByCategory(category);
+    }
 }

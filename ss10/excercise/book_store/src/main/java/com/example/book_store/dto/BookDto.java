@@ -1,7 +1,8 @@
 package com.example.book_store.dto;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
 
 public class BookDto {
     private Integer bookId;
@@ -84,5 +85,18 @@ public class BookDto {
 
     public void setBookDiscount(short bookDiscount) {
         this.bookDiscount = bookDiscount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookDto that = (BookDto) o;
+        return bookId == that.bookId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookId);
     }
 }
